@@ -13,7 +13,7 @@ import logging
 from django.conf import settings
 from django.core.exceptions import FieldDoesNotExist
 from django.db.backends.base.validation import BaseDatabaseValidation
-from django.db.backends.postgresql_psycopg2.base import (
+from django.db.backends.postgresql.base import (
     DatabaseFeatures as BasePGDatabaseFeatures,
     DatabaseWrapper as BasePGDatabaseWrapper,
     DatabaseOperations as BasePGDatabaseOperations,
@@ -31,6 +31,7 @@ logger = logging.getLogger('django.db.backends')
 
 
 class DatabaseFeatures(BasePGDatabaseFeatures):
+    can_return_columns_from_insert = False
     can_return_id_from_insert = False
     can_return_ids_from_bulk_insert = False
     has_select_for_update = False
